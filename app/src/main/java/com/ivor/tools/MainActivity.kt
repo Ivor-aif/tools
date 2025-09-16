@@ -30,7 +30,12 @@ data class ToolItem(
 class MainActivity : ComponentActivity() {
     private val toolsList = listOf(
         ToolItem(
-            name = "入眠助手",
+            name = "💪 强力鼓励工具",
+            description = "克服拖延，激发动力的强力鼓励工具",
+            activityClass = MotivationBoosterActivity::class.java
+        ),
+        ToolItem(
+            name = "🌙 入眠助手",
             description = "帮助您更好地入睡的小工具",
             activityClass = SleepHelperActivity::class.java
         )

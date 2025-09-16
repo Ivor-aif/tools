@@ -24,6 +24,12 @@
         </activity>
         
         <activity
+            android:name=".MotivationBoosterActivity"
+            android:exported="false"
+            android:label="强力鼓励工具"
+            android:theme="@style/Theme.Tools" />
+            
+        <activity
             android:name=".SleepHelperActivity"
             android:exported="false"
             android:label="@string/sleep_helper_title"

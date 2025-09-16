@@ -35,14 +35,18 @@ class SleepHelperActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            SleepHelperScreen()
+            SleepHelperScreen(
+                onBack = { finish() }
+            )
         }
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SleepHelperScreen() {
+fun SleepHelperScreen(
+    onBack: () -> Unit = {}
+) {
     val context = LocalContext.current
     var isReading by remember { mutableStateOf(false) }
     var currentContent by remember { mutableStateOf(BoringContentData.getRandomContent("course", context)) }
@@ -97,7 +101,7 @@ fun SleepHelperScreen() {
                     ) 
                 },
                 navigationIcon = {
-                    IconButton(onClick = { /* 返回 */ }) {
+                    IconButton(onClick = onBack) {
                         Icon(
                             imageVector = Icons.Filled.ArrowBack,
                             contentDescription = "返回",
