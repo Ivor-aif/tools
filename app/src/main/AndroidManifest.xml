@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- 小工具相关权限 -->
+    <uses-permission android:name="android.permission.BIND_APPWIDGET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -40,6 +44,26 @@
             android:exported="false"
             android:label="添加无聊内容"
             android:theme="@style/Theme.Tools" />
+            
+        <!-- 倒计时记事本小工具配置Activity -->
+        <activity
+            android:name=".CountdownNoteConfigActivity"
+            android:exported="false"
+            android:label="倒计时记事本设置"
+            android:theme="@style/Theme.Tools" />
+            
+        <!-- 倒计时记事本小工具 -->
+        <receiver
+            android:name=".CountdownNoteWidget"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.ivor.tools.ACTION_UPDATE_WIDGET" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/countdown_note_widget_info" />
+        </receiver>
     </application>
 
 </manifest>
